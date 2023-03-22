@@ -1,0 +1,127 @@
+syntax = "proto3";
+package grpc;
+import "google/protobuf/struct.proto";
+
+option java_multiple_files = true;
+
+message Student{
+  string studentId = 1;
+  string studentPw = 2;
+  string studentName = 3;
+  string studentDpt = 4;
+  repeated string completedCourses = 5;
+}
+
+message Course{
+  string courseId = 1;
+  string courseName = 2;
+  string professorName = 3;
+  repeated string classroomList = 4;
+}
+
+message getAllStudentDataResponse{
+  repeated Student student = 1;
+}
+
+message getAllCourseDataResponse{
+  repeated Course course = 1;
+}
+
+message addStudentRequest{
+  string studentId = 1;
+  string studentPw = 2;
+  string studentName = 3;
+  string studentDpt = 4;
+  string completedCourses = 5;
+}
+
+message addStudentResponse{
+  bool success = 1;
+}
+
+message deleteStudentRequest{
+  string studentId = 1;
+}
+
+message deleteStudentResponse{
+  bool success = 1;
+}
+
+message addCourseRequest{
+  string courseId = 1;
+  string courseName = 2;
+  string professorName = 3;
+  string classroomList = 4;
+}
+
+message addCourseResponse{
+  bool success = 1;
+}
+
+message deleteCourseRequest{
+  string courseId = 1;
+}
+
+message deleteCourseResponse{
+  bool success = 1;
+}
+
+message isRegisteredStudentRequest{
+  string studentId = 1;
+}
+
+message isRegisteredStudentResponse{
+  Student student = 1;
+  string status = 2;
+}
+
+message isRegisteredCourseRequest{
+  string courseId = 1;
+}
+
+message isRegisteredCourseResponse{
+  Course course = 1;
+  string status = 2;
+
+}
+
+message validateLoginRequest{
+  string inputId = 1;
+  string inputPw = 2;
+}
+
+message validateLoginResponse{
+  bool success = 1;
+}
+
+message addReservationRequest{
+  string studentId = 1;
+  string courseId = 2;
+}
+
+message addReservationResponse{
+  bool success = 1;
+}
+
+message Reservation{
+  string reservationId = 1;
+  string studentId = 2;
+  string courseId = 3;
+}
+
+message Empty {
+
+}
+
+service EnrolmentService{
+  rpc getAllStudentData(Empty) returns(getAllStudentDataResponse) {}
+  rpc getAllCourseData(Empty) returns(getAllCourseDataResponse) {}
+  rpc addStudent(addStudentRequest) returns(addStudentResponse) {}
+  rpc deleteStudent(deleteStudentRequest) returns(deleteStudentResponse) {}
+  rpc addCourse(addCourseRequest) returns(addCourseResponse) {}
+  rpc deleteCourse(deleteCourseRequest) returns(deleteCourseResponse) {}
+  rpc isRegisteredStudent(isRegisteredStudentRequest) returns(isRegisteredStudentResponse) {}
+  rpc isRegisteredCourse(isRegisteredCourseRequest) returns(isRegisteredCourseResponse) {}
+  rpc addReservation(addReservationRequest) returns(addReservationResponse) {}
+  rpc validateLogin(validateLoginRequest) returns(validateLoginResponse) {}
+}
