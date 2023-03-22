@@ -2,7 +2,7 @@
 - grpc(Google Remote Procedure Call)을 이용한 수강신청 프로그램
 
 # Project Goal
-- grpc의 메시지 메시지 전송 프로토콜을 학습하고 프로세스간 통신을 이해한다.
+- grpc 메시지 전송 프로토콜을 학습하고 프로세스간 통신을 이해한다.
 
 # 주요기능 (Sequence Diagram)
 <details>
